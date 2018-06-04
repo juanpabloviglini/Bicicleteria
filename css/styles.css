@@ -1,0 +1,165 @@
+@import "normalize.css";
+@import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+}
+
+ul, ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+}
+
+
+img {
+	width: 100%;
+}
+
+
+.logo {
+	border-radius: 50%;
+	border: solid 1px #000;
+	width: 180px;
+	margin: 15px auto 30px;
+	display: block;
+}
+
+.main-nav a, .main-footer a {
+	background-color: #333;
+	color: #fff;
+	font-size: 1.3em;
+	display: block;
+	border-bottom: solid 1px #fff;
+	padding: 15px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.toggle-nav {
+	display: block;
+	margin: 0 auto 30px;
+	background-color: #333;
+	color: #fff;
+	width: 40px;
+	text-align: center;
+	font-size: 1.5em;
+	padding: 10px 0;
+}
+
+.main-nav, .banner {
+	display: none;
+}
+
+.container {
+	margin: 0 15px;
+}
+
+.product {
+	margin-top: 30px;
+}
+
+.product a {
+	background-color: #333;
+	color: #fff;
+	padding: 15px 25px;
+}
+
+.main-footer {
+	margin-top: 30px;
+}
+
+.main-footer a {
+	background-color: #ec4e14;
+}
+
+
+@media (min-width: 760px) {
+	.container {
+		margin: 0;
+	}
+
+	.toggle-nav {
+		display: none;
+	}
+
+	.main-nav, .banner {
+		display: block !important;
+	}
+
+	.vip-products {
+		overflow: hidden;
+	}
+
+	.product {
+		float: left;
+		width: 48.34%;
+		margin-left: 0.83%;
+		margin-right: 0.83%;
+	}
+
+	.main-nav {
+		overflow: hidden;
+		margin-bottom: 30px;
+	}
+
+	.main-nav li {
+		float: left;
+		margin: 0 0.83%;
+		width: 15%;
+	}
+
+	.main-nav a {
+		font-size: 1.1em;
+		padding: 15px 0;
+	}
+
+	.banner, .main-footer {
+		margin-left: 0.83%;
+		margin-right: 0.83%;
+	}
+}
+
+
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1200px;
+		margin: auto;
+	}
+
+	.product {
+		width: 31.66%;
+	}
+
+	/* Estilos para el footer */
+}
+
+/*
+Juan Pablo
+ */
+
+/*
+.main-header header{
+background-color: #000;
+}
+ */
+
+
+.superior {
+max-width: 100%;
+background-color: black;
+height: 200px;
+
+
+}
