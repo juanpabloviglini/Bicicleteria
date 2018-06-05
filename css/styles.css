@@ -83,7 +83,60 @@ img {
 .main-footer a {
 	background-color: #ec4e14;
 }
+.redes-sociales {
+	display: flex;
+	justify-content: center;
+	flex-direction:column;
+	justify-content:space-around;
 
+}
+.redes-sociales img {
+	height: 80px;
+	width: auto;
+}
+
+::selection{
+	background: #c60a0a;
+	color: #ffffff;
+}
+.form-control {
+	border: solid 1px #dddddd;
+	background-color: #cdcdcd;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.form-control input:not([type=checkbox]) {
+	display: block;
+	height: 40px;
+	width: 100%;
+	margin-top: 5px;
+	padding: 15px;
+	font-size: 1em;
+	outline: none;
+}
+.form-control input:hover {
+	transition: 0.5s;
+	background-color: #f2e040;
+}
+.form-control select {
+	width: 60%;
+	height: 40px;
+	font-size: 1em;
+	outline: none;
+}
+.form-control button {
+	background-color: #f2e040;
+	color: #888888;
+	font-size: 1.2em;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+}
+.error {
+	color: #be0000;
+	font-size: 1em;
+	padding-left: 10px;
+}
 
 @media (min-width: 760px) {
 	.container {
@@ -129,6 +182,18 @@ img {
 		margin-left: 0.83%;
 		margin-right: 0.83%;
 	}
+
+	.redes-sociales {
+		display: flex;
+		flex-flow: row-wrap;
+		justify-content:space-around;
+
+	}
+	.redes-sociales img {
+		height: 70px;
+		width: auto;
+	}
+
 }
 
 
