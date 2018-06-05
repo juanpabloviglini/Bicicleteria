@@ -9,6 +9,7 @@
 
 body {
 	font-family: 'Raleway', sans-serif;
+	font-size: 0.7em;
 }
 
 ul, ol {
@@ -23,82 +24,162 @@ a {
 }
 
 
-img {
-	width: 100%;
+
+
+
+.container {
+	margin: auto;
+}
+
+.main-header {
+	background-color: black;
+	/*height: 210px;*/
 }
 
 
 .logo {
 	border-radius: 50%;
-	border: solid 1px #000;
 	width: 180px;
-	margin: 15px auto 30px;
+	margin: auto;
+	padding: 10px;
 	display: block;
 }
 
-.main-nav a, .main-footer a {
-	background-color: #333;
+.main-nav a {
 	color: #fff;
 	font-size: 1.3em;
 	display: block;
-	border-bottom: solid 1px #fff;
-	padding: 15px;
-	text-transform: uppercase;
+	border-top: 1px solid yellow;
+	padding: 10px;
 	text-align: center;
+	background-color: black;
+}
+
+.main-nav a:hover {
+	color: yellow;
 }
 
 .toggle-nav {
 	display: block;
-	margin: 0 auto 30px;
-	background-color: #333;
-	color: #fff;
+	margin: auto;
+	color: yellow;
 	width: 40px;
 	text-align: center;
-	font-size: 1.5em;
-	padding: 10px 0;
+	font-size: 2em;
+	padding: 0px;
 }
+
 
 .main-nav, .banner {
 	display: none;
 }
 
-.container {
-	margin: 0 15px;
+
+.pregunta1, .pregunta2, .pregunta3, .pregunta4, .pregunta5, .pregunta6, .pregunta7, .pregunta8 {
+	border-top: 1px solid yellow;
+	padding: 10px;
+	color: black;
+}
+
+.pregunta1:hover {
+	background-color: #D8D8D8;
+}
+
+.pregunta2:hover {
+	background-color: #D8D8D8;
+}
+
+.pregunta3:hover {
+	background-color: #D8D8D8;
+}
+
+.pregunta4:hover {
+	background-color: #D8D8D8;
+}
+
+.pregunta5:hover {
+	background-color: #D8D8D8;
+}
+
+.pregunta6:hover {
+	background-color: #D8D8D8;
+}
+
+.pregunta7:hover {
+	background-color: #D8D8D8;
+}
+
+.pregunta8:hover {
+	background-color: #D8D8D8;
+}
+
+.respuesta1, .respuesta2, .respuesta3, .respuesta4, .respuesta5, .respuesta6, .respuesta7, .respuesta8 {
+	display: none;
+	padding: 0 10px 10px;
+}
+
+.toggle1, .toggle2, .toggle3, .toggle4, .toggle5, .toggle6, .toggle7, .toggle8 {
+	display: block;
+}
+
+.product img {
+	width: 100%;
 }
 
 .product {
 	margin-top: 30px;
+	padding: 10px;
+	box-shadow: 1px 1px 1px  1px #A4A4A4;
+	overflow: hidden;
 }
 
 .product a {
-	background-color: #333;
-	color: #fff;
+	color: black;
 	padding: 15px 25px;
+	float: right;
+	border-bottom: 1px solid transparent;
+}
+
+.product a:hover {
+	background-color: #D8D8D8;
+	border-bottom-color: yellow;
+}
+
+.titulo {
+	padding: 10px;
+}
+
+.precio{
+	float: right;
+	padding-right: 30px;
+	padding-top: 10px;
+	color: red;
+	font-weight: bold;
 }
 
 .main-footer {
-	margin-top: 30px;
+	background-color: grey;
+	height: 400px;
+	padding: 20px;
+	color: white;
 }
 
-.main-footer a {
-	background-color: #ec4e14;
-}
-.redes-sociales {
-	display: flex;
-	justify-content: center;
-	flex-direction:column;
-	justify-content:space-around;
+.footer_lef {
+
+	padding: 10px;
 
 }
-.redes-sociales img {
-	height: 80px;
-	width: auto;
+
+.footer_rig {
+
+	padding: 10px;
+
 }
 
-::selection{
-	background: #c60a0a;
-	color: #ffffff;
+.footer_rig iframe {
+	padding-top: 10px;
 }
+
 .form-control {
 	border: solid 1px #dddddd;
 	background-color: #cdcdcd;
@@ -138,9 +219,18 @@ img {
 	padding-left: 10px;
 }
 
+
 @media (min-width: 760px) {
 	.container {
 		margin: 0;
+	}
+
+	header {
+		height: 235px;
+	}
+
+	body {
+		font-size: 1em;
 	}
 
 	.toggle-nav {
@@ -148,23 +238,12 @@ img {
 	}
 
 	.main-nav, .banner {
+		display: none;
+	}
+
+	.main-nav, .banner {
 		display: block !important;
-	}
 
-	.vip-products {
-		overflow: hidden;
-	}
-
-	.product {
-		float: left;
-		width: 48.34%;
-		margin-left: 0.83%;
-		margin-right: 0.83%;
-	}
-
-	.main-nav {
-		overflow: hidden;
-		margin-bottom: 30px;
 	}
 
 	.main-nav li {
@@ -175,26 +254,47 @@ img {
 
 	.main-nav a {
 		font-size: 1.1em;
-		padding: 15px 0;
+		padding: 10px 0;
+		border-top: none;
 	}
 
-	.banner, .main-footer {
+	.main-nav a:hover {
+		color: yellow;
+		border-bottom-color: yellow;
+	}
+
+	.bicicleta {
+		overflow: hidden;
+	}
+
+	.product {
+		float: left;
+		width: 48.34%;
 		margin-left: 0.83%;
 		margin-right: 0.83%;
 	}
 
-	.redes-sociales {
-		display: flex;
-		flex-flow: row-wrap;
-		justify-content:space-around;
+	.footer_lef {
 
-	}
-	.redes-sociales img {
-		height: 70px;
-		width: auto;
+		width: 48.34%;
+		margin-left: 0.83%;
+		margin-right: 0.83%;
+		float: left;
+		border-top: 1px yellow solid;
 	}
 
+	.footer_rig {
+		
+		width: 48.34%;
+		margin-left: 0.83%;
+		margin-right: 0.83%;
+		float: left;
+		border-top: 1px yellow solid;
+	}
 }
+
+
+
 
 
 @media (min-width: 1200px) {
@@ -207,24 +307,8 @@ img {
 		width: 31.66%;
 	}
 
-	/* Estilos para el footer */
-}
-
-/*
-Juan Pablo
- */
-
-/*
-.main-header header{
-background-color: #000;
-}
- */
-
-
-.superior {
-max-width: 100%;
-background-color: black;
-height: 200px;
-
-
+	.main-header {
+		background-color: black;
+		height: 235px;
+	}
 }
