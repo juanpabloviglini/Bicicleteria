@@ -1,40 +1,44 @@
 <?php
-    $errores=[];
-    $name='';
-    $email='';
-    $username='';
-    $phone='';
-    $direction='';
+require_once("functions.php");
 
-    if ($_POST) {
-      $name=$_POST['name'];
-      $email=$_POST['email'];
-      $username=$_POST['username'];
-      $phone=$_POST['phone'];
-      $direction=$_POST['direction'];
+if (estaLogueado()) {
+header('location: index.php');
+exit;
+}
 
-      if ($name=="") {
-        $errores['name']="*Completa tu nombre.";
-      }
-      if ($email=="" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errores['email']="*Completa tu email correctamente.";
-      }
-      if ($username=="") {
-        $errores['username']="*Completa tu username correctamente.";
-      }
-      if ($direction=="") {
-        $errores['direction']="*Completa tu dirección correctamente.";
-      }
-      if ($phone=="") {
-        $errores['phone']="*Completa tu telefono correctamente.";
-      }
-      if ($_POST['password']!=$_POST['passwordr']) {
-        $errores['pass']="*Las contraseñas no coinciden.";
-      }else if ($_POST['password']=="" || $_POST['passwordr']=="") {
-        $errores['pass']="*Complete las contraseñas.";
-      }
+$errores=[];
+$name='';
+$email='';
+$username='';
+$phone='';
+$direction='';
+
+if ($_POST) {
+  $errores = [];
+  $name=  trim($_POST['name']);
+  $email=  trim($_POST['email']);
+  $password=  trim($_POST['password']);
+  $passwordr=  trim($_POST['passwordr']);
+
+  $username=trim($_POST['username']);
+  $phone=trim($_POST['phone']);
+  $direction=trim($_POST['direction']);
+
+
+  $errores = validar($_POST,$_FILES);
+
+  if (empty($errores)) {
+    $usuario = crearArrayUsuario($_POST,$_FILES);
+
+    $guardarExitoso=guardarUsuario($usuario);
+    if ($guardarExitoso) {
+      header('location:index.php?bienvenido');
     }
 
+
+  }
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -54,10 +58,10 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="productos.html">PRODUCTOS</a></li>
+          <li><a href="index.php">HOME</a></li>
+          <li><a href="productos.php">PRODUCTOS</a></li>
+          <li><a href="faq.php">FAQ's</a></li>
           <li><a href="#">REGISTRO</a></li>
-          <li><a href="faq.html">FAQ's</a></li>
           <li><a href="login.php">Log in</a></li>
         </ul>
       </nav>
@@ -65,7 +69,7 @@
 
 
 
-   <form method='post'>
+   <form method='post' enctype="multipart/form-data">
       <fieldset >
 			<legend>Registrate</legend>
 
@@ -94,7 +98,7 @@
 			</div>
 
 			<div class='form-control'>
-				<label for='username' >Nombre de usuario*:</label>
+				<label for='username' >Username*:</label>
 				<input type='text' name='username' id='username' value=<?=$username?>>
         <div class="error">
           <?php if (!empty( $errores['username'])): ?>
@@ -107,8 +111,8 @@
 				<label for='password'>Contraseña*:</label>
 				<input type='password' name='password' id='password'>
         <div class="error">
-          <?php if (!empty( $errores['pass'])): ?>
-            <?= $errores['pass']; ?>
+          <?php if (!empty( $errores['password'])): ?>
+            <?= $errores['password']; ?>
           <?php endif; ?>
         </div>
 			</div>
@@ -116,8 +120,8 @@
 				<label for='passwordr'>Confirme la Contraseña*:</label>
 				<input type='password' name='passwordr' id='passwordr'>
         <div class="error">
-          <?php if (!empty( $errores['pass'])): ?>
-            <?= $errores['pass']; ?>
+          <?php if (!empty( $errores['password'])): ?>
+            <?= $errores['password']; ?>
           <?php endif; ?>
         </div>
 			</div>
@@ -139,7 +143,15 @@
           <?php endif; ?>
         </div>
 			</div>
-
+      <div class='form-control'>
+        <label for='archivo'>Adjunte su foto de perfil*:</label>
+          <input type="file" name="archivo" value="">
+          <div class="error">
+            <?php if (!empty( $errores['profilePic'])): ?>
+              <?= $errores['profilePic']; ?>
+            <?php endif; ?>
+          </div>
+      </div>
 
 			<div class='form-control'>
 				<button type="submit">ENVIAR</button>

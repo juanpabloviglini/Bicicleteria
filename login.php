@@ -1,28 +1,34 @@
 <?php
-    $errores=[];
-    $username='';
-    $usuario1=['username'=>'soymanucho','pass'=>'jajaja'];
-    $usuario2=['username'=>'soymanucho2','pass'=>'jajaja2'];
-    $usuarios=[$usuario1,$usuario2];
 
-    if ($_POST) {
+    require_once('functions.php');
 
-      $username=$_POST['username'];
-
-      if ($username=="") {
-        $errores['username']="*Completa tu username correctamente.";
-      }
-      foreach ($usuarios as $usuario => $datosUser) {
-        if ($datosUser['username']==$username and $datosUser['pass']==$_POST['password']) {
-          echo "Login Completado correctamente! Bienvenido $username !";
-          break;
-        }else {
-          $errores['pass']="*No coinciden las credenciales, pruebe de hacer Log In nuevamente.";
-        }
-      }
-
+    if (estaLogueado()) {
+    header('location: index.php');
+    exit;
     }
 
+    $username='';
+
+    $usuarios=traerTodos();
+
+    if ($_POST) {
+      $username=trim($_POST['username']);
+      $errores=validarLogin($_POST);
+
+      if (empty($errores)) {
+  			$usuario = existeUsername($username);
+
+  			loguear($usuario);
+
+
+  			if (isset($_POST["recordar"])) {
+  	        setcookie('username', $usuario['username'], time() + 3600 * 24 * 365);
+  	      }
+
+  			header('location: index.php?logueoExitoso');
+  			exit;
+  		}
+    }
 
 
 ?>
@@ -43,10 +49,10 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="productos.html">PRODUCTOS</a></li>
+          <li><a href="index.php">HOME</a></li>
+          <li><a href="productos.php">PRODUCTOS</a></li>
+          <li><a href="faq.php">FAQ's</a></li>
           <li><a href="register.php">REGISTRO</a></li>
-          <li><a href="faq.html">FAQ's</a></li>
           <li><a href="#">Log in</a></li>
         </ul>
       </nav>
@@ -60,11 +66,11 @@
 			<strong>* campos requeridos</strong><br><br>
 
 			<div class='form-control'>
-				<label for='username' >Nombre de usuario*:</label>
+				<label for='username' >Username*:</label>
 				<input type='text' name='username' id='username' value=<?=$username?>>
         <div class="error">
-          <?php if (!empty( $errores['pass'])): ?>
-            <?= $errores['pass']; ?>
+          <?php if (!empty( $errores['username'])): ?>
+            <?= $errores['username']; ?>
           <?php endif; ?>
         </div>
 			</div>
@@ -73,11 +79,20 @@
 				<label for='password'>Contraseña*:</label>
 				<input type='password' name='password' id='password'>
         <div class="error">
-          <?php if (!empty( $errores['pass'])): ?>
-            <?= $errores['pass']; ?>
+          <?php if (!empty( $errores['password'])): ?>
+            <?= $errores['password']; ?>
           <?php endif; ?>
         </div>
 			</div>
+
+      <div class="row">
+        <div class="form-control">
+          <div class="form-group">
+            <input type="checkbox" name="recordar">
+            Recordar
+          </div>
+        </div>
+      </div>
 
 			<div class='form-control'>
 				<button type="submit">ENVIAR</button>
